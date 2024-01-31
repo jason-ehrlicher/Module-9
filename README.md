@@ -19,7 +19,7 @@ Create an express back-end application for a Blog website using MongoDB. You sho
   title, description and image)
  - Other users should be able to like the posts and comment on the posts.
 
-*Exercise 2 is in the folder titled mongoBlog*
+*Exercise 2 is in the folder titled "mongoBlog"*
 
 ## Exercise 3 (Slide 42):
 
