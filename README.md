@@ -6,7 +6,7 @@ Repository containing all exercises for Module 9
 
 Review your Calculator application from Module 5 to make sure that it uses a proper MVC structure.
     
-*Screenshot for Exercise 1 is in "Exercise 1" folder*
+==Screenshot for Exercise 1 is in "Exercise 1" folder==
 
 ## Exercise 2 (Slide 28):
 
@@ -19,7 +19,7 @@ Create an express back-end application for a Blog website using MongoDB. You sho
   title, description and image)
  - Other users should be able to like the posts and comment on the posts.
 
-*Exercise 2 is in the folder titled mongoBlog*
+==Exercise 2 is in the folder titled mongoBlog==
 
 ## Exercise 3 (Slide 42):
 
