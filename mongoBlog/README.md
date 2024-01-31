@@ -60,7 +60,7 @@ To start the application, run `node [server.js file]` from the root directory. E
 - User: Contains fields for userName, email, and password.
 - Post: Contains fields for userID (reference to User), title, description, imageURL, and timestamp.
 - Comment: Contains fields for postID (reference to Post), userID (reference to User), text, and timestamp.
-- Like: Contains fields for postID (reference to Post), userID (reference to User), and createdAt. Unique index on post and user to ensure one like per user per post.
+- Like: Contains fields for postID (reference to Post), userID (reference to User), and timestamp. Unique index on post and user to ensure one like per user per post.
 
 ## Controllers
 
