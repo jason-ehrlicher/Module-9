@@ -1,5 +1,5 @@
 "use strict";
-require('dotenv').config(); // Add this line if not present in your main file
+require('dotenv').config(); 
 const Mongoose = require("mongoose");
 
 const uri = process.env.DB_URI; 

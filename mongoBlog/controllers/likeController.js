@@ -4,8 +4,8 @@ let Models = require("../models/index");
 const getLikes = (res) => {
     // find all likes
   Models.Like.find({})
-    .populate("user")
-    .populate("post")
+    .populate("userID")
+    .populate("postID")
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);
