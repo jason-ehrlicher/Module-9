@@ -6,7 +6,7 @@ Repository containing all exercises for Module 9
 
 Review your Calculator application from Module 5 to make sure that it uses a proper MVC structure.
     
-    ### Screenshot for Exercise 1 is in "Exercise 1" folder
+**Screenshot for Exercise 1 is in "Exercise 1" folder**
 
 ## Exercise 2 (Slide 28):
 
