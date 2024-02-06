@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket Chat App</title>
+    <style>
+      body,
+      ul {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font: 16px Helvetica, Arial;
+        background-color: #f0f0f0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      h2 {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 0;
+      }
+
+      #chat-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      #messages {
+        list-style-type: none;
+        overflow-y: auto;
+        flex: 1;
+        padding: 20px;
+      }
+
+      #messages li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #ffffff;
+        border-radius: 5px;
+      }
+
+      #messages li.system {
+        background-color: #e9ecef;
+        color: #666;
+      }
+
+      #user-list-container {
+        width: 200px;
+        background: #ffffff50;
+        color: black;
+        padding: 10px;
+        overflow-y: auto;
+        border: 1px solid #000;
+        height: 100vh;
+        box-sizing: border-box; /
+      }
+
+      #user-list-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      #user-list {
+        list-style-type: none;
+      }
+
+      #user-list li {
+        padding: 5px;
+        border-bottom: 1px solid #ffffff50;
+      }
+
+      form {
+        display: flex;
+        padding: 10px;
+        background: #007bff;
+      }
+
+      form input {
+        flex: 1;
+        margin-right: 10px;
+        padding: 10px;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+      }
+
+      form button {
+        background: #ffc107;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      form button:hover {
+        background-color: #e0a800;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Chat container holds the chat interface -->
+    <div id="chat-container">
+      <!-- Heading displaying the chat application's title -->
+      <h2>Welcome to Socket Chat</h2>
+      <!-- Unordered list where chat messages will be displayed -->
+      <ul id="messages"></ul>
+
+      <!-- Form for sending messages -->
+      <form id="form" action="">
+        <input id="input" autocomplete="off" placeholder="Type a message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <!-- Container for displaying who's online -->
+    <div id="user-list-container">
+      <!-- Title for the who's online section -->
+      <div id="user-list-title">Who's Online:</div>
+      <!-- Unordered list where the names of online users will be displayed -->
+      <ul id="user-list"></ul>
+    </div>
+    <!-- Script to include the Socket.IO library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // Initialize socket.io
+      let socket = io();
+
+      // Grab DOM elements to interact with them later
+      const form = document.getElementById("form");
+      const input = document.getElementById("input");
+      const messages = document.getElementById("messages");
+      const userList = document.getElementById("user-list");
+
+      // Event listener for form submission
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission behavior
+        if (input.value) {
+          // Emit a "chat message" event to the server with the input's value
+          socket.emit("chat message", input.value);
+          // Clear the input field after sending the message
+          input.value = "";
+        }
+      });
+
+      // Listen for "chat message" events from the server
+      socket.on("chat message", function (data) {
+        // Create a new list item and add it to the messages list
+        const item = document.createElement("li");
+        item.textContent = data.user + ": " + data.msg;
+        messages.appendChild(item);
+        // Scroll to the bottom of the messages list
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+
+      // Listen for "user list" updates from the server
+      socket.on("user list", function (users) {
+        // Clear the current user list
+        userList.innerHTML = "";
+        // Add each user to the user list
+        users.forEach(function (user) {
+          const item = document.createElement("li");
+          item.textContent = user;
+          userList.appendChild(item);
+        });
+      });
+
+      // Prompt the user for a nickname
+      const nickname = prompt("Enter your nickname:", "Anonymous");
+      // Emit a "nickname" event to the server with the chosen nickname
+      socket.emit("nickname", nickname);
+    </script>
+  </body>
+</html>
