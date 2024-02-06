@@ -52,3 +52,5 @@ Using the guide at https://socket.io/get-started/chat as a helper, try to implem
   directly as soon as he/she presses enter.
 - Add “{user} is typing” functionality.
 - Show who’s online.
+
+*Exercise 5 is in the folder titled "socket-chat-app"*
