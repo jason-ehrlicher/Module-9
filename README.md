@@ -32,6 +32,8 @@ Create an express back-end application for a Blog website using MySQL. You shoul
   title, description and image)
 - Other users should be able to like the posts and comment on the posts.
 
+*Exercise 3 is in the folder titled "mySQLBlog"*
+
 ## Exercise 4 (Slide 52):
 
 Choose a third-party microservice (see the list of [free JSON APIs](https://docs.google.com/spreadsheets/d/15iDpjqyBkSse9wcN7vvQvORBvX8P_ivAjm-iKXp776Y/edit#gid=0)) and connect it to your current express application (or a new one) with its own routes, controller and model, to add new functionality to your application.
