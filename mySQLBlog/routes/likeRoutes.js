@@ -13,4 +13,10 @@ router.delete('/:postID/:userID', (req, res) => {
   Controllers.likeController.removeLike(req, res);
 });
 
+// Fetch all likes
+router.get('/', (req, res) => {
+  Controllers.likeController.getLikes(req, res);
+});
+
+
 module.exports = router;
