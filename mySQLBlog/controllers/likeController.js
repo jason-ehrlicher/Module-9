@@ -27,7 +27,20 @@ const removeLike = (req, res) => {
     });
 };
 
+const getLikes = (req, res) => {
+  Models.Like.findAll({})
+    .then((likes) => {
+      res.send({ result: 200, data: likes });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send({ error: err.message });
+    });
+};
+
+
 module.exports = {
   addLike,
   removeLike,
+  getLikes,
 };
