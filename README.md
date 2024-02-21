@@ -42,7 +42,7 @@ Choose a third-party microservice (see the list of [free JSON APIs](https://docs
 - via the query - eg. GET http://localhost:8080/api/users?page=1
 - via the params - eg. PUT http://localhost:8080/api/users/1234
 
-- *Exercise 4 is in the folder titled "mySQLBlog"*
+  *Exercise 4 is in the folder titled "mySQLBlog"*
 
 ## Exercise 5 (Slide 61):
 
