@@ -12,14 +12,16 @@ let userRoutes = require("./routes/userRoutes");
 let postRoutes = require('./routes/postRoutes');
 let commentRoutes = require('./routes/commentRoutes');
 let likeRoutes = require('./routes/likeRoutes');
+let taylorSwiftRoutes = require('./routes/taylorSwiftRoutes')
 
 app.use("/api/users", userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/likes', likeRoutes);
+app.use('/api/taylor-swift', taylorSwiftRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to my MongoDB application." });
+  res.json({ message: "Welcome to my MySQL application." });
 });
 
 // set port, listen for requests
